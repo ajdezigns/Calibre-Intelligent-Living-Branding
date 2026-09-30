@@ -13,7 +13,7 @@ will run without it.
 
 1. HACS → the three-dot menu (top right) → **Custom repositories**
 2. Repository: `https://github.com/nadim-cil/Calibre-Intelligent-Living-Branding`
-   Category: **Plugin**
+   Category: **Dashboard** (this is HACS's current label for what used to be called "Plugin")
 3. Find it in HACS and click **Download**
 4. **One manual step HACS can't do for you:** open `configuration.yaml` and
    add the file under `frontend.extra_module_url`:
