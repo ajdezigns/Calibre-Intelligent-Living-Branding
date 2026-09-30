@@ -84,7 +84,14 @@
   function syncColors() {
     const sidebarBg = themeVar('--sidebar-background-color', NAVY);
     const dark = isDark(sidebarBg);
-    if (line1Ref) line1Ref.style.color = dark ? GOLD : NAVY;
+    if (line1Ref) {
+      line1Ref.style.color = dark ? GOLD : NAVY;
+      // Cinzel's fine serif strokes render great at gold-on-navy but turn
+      // jagged/hard to read as thin dark-on-light strokes at this size —
+      // fall back to Montserrat (matching the subtitle) in light mode.
+      line1Ref.style.fontFamily = dark ? '"Cinzel", serif' : '"Montserrat", sans-serif';
+      line1Ref.style.letterSpacing = dark ? '2px' : '1.5px';
+    }
     if (line2Ref) line2Ref.style.color = themeVar('--sidebar-text-color', dark ? '#EAE4D9' : '#5B6577');
     if (overlayRef) overlayRef.style.backgroundColor = sidebarBg;
     if (svgPath30Ref) svgPath30Ref.style.fill = sidebarBg;
@@ -109,11 +116,20 @@
     titleEl.style.width = '100%';
     titleEl.style.overflow = 'hidden';
 
+    if (!document.getElementById('calibre-font-link')) {
+      const fontLink = document.createElement('link');
+      fontLink.id = 'calibre-font-link';
+      fontLink.rel = 'stylesheet';
+      fontLink.href = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap';
+      document.head.appendChild(fontLink);
+    }
+
     const line1 = document.createElement('div');
     line1.textContent = 'CALIBRE';
+    line1.style.fontFamily = '"Cinzel", serif';
     line1.style.fontWeight = '700';
-    line1.style.fontSize = '13px';
-    line1.style.letterSpacing = '1.5px';
+    line1.style.fontSize = '14px';
+    line1.style.letterSpacing = '2px';
     line1.style.whiteSpace = 'nowrap';
 
     const line2 = document.createElement('div');
