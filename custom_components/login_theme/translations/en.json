@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Calibre Intelligent Living Login",
+        "description": "Applies the Calibre Intelligent Living theme (light and dark mode) and logo to the Home Assistant login page, for both local and remote connections."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Calibre Intelligent Living Login is already set up."
+    }
+  }
+}
